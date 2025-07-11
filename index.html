@@ -294,23 +294,6 @@
       opacity: 0.8;
     }
 
-    .video-fallback {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.8;
-      display: none;
-    }
-
-    #designer-video:not([src]) + .video-fallback,
-    #designer-video:invalid + .video-fallback {
-      display: block;
-    }
-
     .sand-word {
       position: absolute;
       color: #ffffff;
@@ -386,7 +369,6 @@
             <source src="ui_bg.mp4" type="video/mp4">
             Your browser does not support the video tag. Please view this site in a modern browser.
           </video>
-          <img class="video-fallback" src="ui_bg_fallback.jpg" alt="UI/UX Designer Background">
           <div class="portfolio-header">Fardaad Khan - UI/UX Designer</div>
           <div class="portfolio-section">
             <h2>UI/UX Design Projects</h2>
