@@ -17,7 +17,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-      overflow: auto;
+      overflow: hidden;
       position: relative;
     }
 
@@ -88,6 +88,7 @@
       height: 100vh;
       z-index: 10;
       border-radius: 0;
+      overflow: hidden;
     }
 
     .card.flipped .card-inner {
@@ -122,21 +123,21 @@
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      padding: 30px;
-      padding-bottom: 25vh;
-      overflow-y: auto;
       position: relative;
       z-index: 1;
+      overflow: hidden;
     }
 
     #developer .card-back {
       background: #f9fafb;
       color: #2d3748;
+      padding: 0;
     }
 
     #designer .card-back {
-      
       color: #ffffff;
+      padding-bottom: 25vh;
+      overflow-y: auto;
     }
 
     .card.flipped .card-back {
@@ -197,6 +198,25 @@
       to {
         stroke-dashoffset: 0;
       }
+    }
+
+    .view-projects-btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #d89999;
+      background: transparent;
+      border: 2px solid #83624d;
+     
+
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .view-projects-btn:hover {
+      background: #2d3748;
+      color: #e6f0fa;
     }
 
     #mouse-trail {
@@ -275,7 +295,6 @@
 
     #designer .portfolio-section ul li {
       color: #ffffff;
-      
     }
 
     .portfolio-footer {
@@ -288,14 +307,14 @@
     }
 
     #developer .portfolio-footer {
-      color: #a0aec0;
+      color: #2d3748;
     }
 
     #designer .portfolio-footer {
       color: #e6f0fa;
     }
 
-    #designer-video {
+    #developer-video, #designer-video {
       position: absolute;
       top: 0;
       left: 0;
@@ -304,6 +323,43 @@
       object-fit: cover;
       z-index: 0;
       opacity: 0.8;
+      transform: scale(1.2);
+    }
+
+    .developer-content {
+      position: absolute;
+      right: 0;
+      top: -20px;
+      width: 25%;
+      height: 100%;
+      color: #2d3748;
+      padding: 20px;
+      overflow-y: auto;
+      z-index: 3;
+    }
+
+    .developer-content .portfolio-header,
+    .developer-content .portfolio-section h2,
+    .developer-content .portfolio-section ul li,
+    .developer-content .portfolio-footer {
+      color: #2d3748;
+    }
+
+    .intro-container {
+      position: absolute;
+      top: 65%; /* Moved lower */
+      left: 51%; /* Moved more to the right */
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 3;
+    }
+
+    .intro-text {
+      color: #2d3748;
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 20px;
+      max-width: 500px;
     }
 
     .sand-word {
@@ -321,6 +377,15 @@
       50% { opacity: 1; }
       100% { opacity: 0; transform: translateY(-100px); }
     }
+
+    .designer-intro-container {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      z-index: 3;
+    }
   </style>
 </head>
 <body>
@@ -337,35 +402,45 @@
           <div class="typing-effect" id="dev-typing"></div>
         </div>
         <div class="card-back">
-          <div class="portfolio-header">Fardaad Khan - Software Developer</div>
-          <div class="portfolio-content">
-            <div class="portfolio-section">
-              <h2>💻 Software Projects</h2>
-              <ul>
-                <li style="--index: 0;">1) AWS - Cafe Management Store</li>
-                <li style="--index: 1;">2) CISCO Networking and Routing</li>
-                <li style="--index: 2;">3) AI for Engineering – Broken Sign Detection</li>
-                <li style="--index: 3;">4) Custom Payment Forms using iFrames</li>
-                <li style="--index: 4;">5) Robot Navigation using DFS, BFS, Astar and Djikstra's</li>
-                <li style="--index: 5;">6) Railway Crossing using Arduino</li>
-                <li style="--index: 6;">7) Smoke, Climate, Temp Detector using Arduino + C#</li>
-                <li style="--index: 7;">8) Fun Projects – Calc App, Quiz App, Clone Chatbot, Impossible Puzzle Games</li>
-              </ul>
+          <video id="developer-video" autoplay loop muted playsinline preload="auto">
+            <source src="dev_bg.mp4" type="video/mp4">
+            Your browser does not support the video tag. Please view this site in a modern browser.
+          </video>
+          <div class="developer-content">
+            <div class="portfolio-header">Fardaad Khan - Software Developer</div>
+            <div class="portfolio-content">
+              <div class="portfolio-section">
+                <h2>💻 Software Projects</h2>
+                <ul>
+                  <li style="--index: 0;">1) AWS - Cafe Management Store</li>
+                  <li style="--index: 1;">2) CISCO Networking and Routing</li>
+                  <li style="--index: 2;">3) AI for Engineering – Broken Sign Detection</li>
+                  <li style="--index: 3;">4) Custom Payment Forms using iFrames</li>
+                  <li style="--index: 4;">5) Robot Navigation using DFS, BFS, Astar and Djikstra's</li>
+                  <li style="--index: 5;">6) Railway Crossing using Arduino</li>
+                  <li style="--index: 6;">7) Smoke, Climate, Temp Detector using Arduino + C#</li>
+                  <li style="--index: 7;">8) Fun Projects – Calc App, Quiz App, Clone Chatbot, Impossible Puzzle Games</li>
+                </ul>
+              </div>
+              <div class="portfolio-section">
+                <h2>🛠️ Technical Skills</h2>
+                <ul>
+                  <li style="--index: 0;">Programming Languages: Python, C#, JavaScript</li>
+                  <li style="--index: 1;">Frameworks & Tools: AWS, Node.js, Arduino</li>
+                  <li style="--index: 2;">Networking: Cisco Routing & Switching</li>
+                  <li style="--index: 3;">AI & Machine Learning: TensorFlow, Scikit-learn</li>
+                  <li style="--index: 4;">Web Development: HTML, CSS, iFrames</li>
+                  <li style="--index: 5;">Data Structures & Algorithms: Beginner Proficiency</li>
+                </ul>
+              </div>
             </div>
-            <div class="portfolio-section">
-              <h2>🛠️ Technical Skills</h2>
-              <ul>
-                <li style="--index: 0;">Programming Languages: Python, C#, JavaScript</li>
-                <li style="--index: 1;">Frameworks & Tools: AWS, Node.js, Arduino</li>
-                <li style="--index: 2;">Networking: Cisco Routing & Switching</li>
-                <li style="--index: 3;">AI & Machine Learning: TensorFlow, Scikit-learn</li>
-                <li style="--index: 4;">Web Development: HTML, CSS, iFrames</li>
-                <li style="--index: 5;">Data Structures & Algorithms: Beginner Proficiency</li>
-              </ul>
+            <div class="portfolio-footer">
+              © 2025 Fardaad Khan | Portfolio 
             </div>
           </div>
-          <div class="portfolio-footer">
-            © 2025 Fardaad Khan | Portfolio Presentation
+          <div class="intro-container">
+            <p class="intro-text">Hi, I'm Fardaad Khan, a passionate software developer with a knack for building innovative solutions, from AI-driven applications to interactive web experiences.</p>
+            <button class="view-projects-btn" onclick="window.location.href='cards.html'">View My Projects</button>
           </div>
         </div>
       </div>
@@ -403,6 +478,9 @@
                 <li>Customised Iframe Donation forms</li>
               </ul>
             </div>
+          </div>
+          <div class="designer-intro-container">
+            <button class="view-projects-btn" onclick="window.location.href='cards.html'">View My Projects</button>
           </div>
           <div class="portfolio-footer">
             © 2025 Fardaad Khan | UI/UX Portfolio
@@ -521,6 +599,15 @@
           card.classList.add('flipped');
         }
       });
+    });
+
+    const developerVideo = document.getElementById('developer-video');
+    developerVideo.addEventListener('error', (e) => {
+      console.error('Error loading developer video:', e);
+      console.error('Video source:', developerVideo.currentSrc);
+    });
+    developerVideo.addEventListener('loadeddata', () => {
+      console.log('Developer video loaded successfully');
     });
 
     const designerVideo = document.getElementById('designer-video');
