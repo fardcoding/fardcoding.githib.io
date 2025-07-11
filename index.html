@@ -1,1 +1,596 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Choose Your Character - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, rgba(20, 30, 35, 0.8), rgba(35, 45, 50, 0.8));
+      color: #e6f0fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: auto;
+      position: relative;
+    }
+
+    #waterfall-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.4;
+    }
+
+    h1 {
+      margin-bottom: 60px;
+      font-size: 3rem;
+      font-weight: 600;
+      text-shadow: 0 0 8px rgba(230, 240, 250, 0.5);
+      animation: fadeIn 1.5s ease-in-out;
+      z-index: 2;
+      color: #e6f0fa;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      display: flex;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      width: 350px;
+      height: 430px;
+      perspective: 1000px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+      transform-style: preserve-3d;
+      border-radius: 20px;
+      background: #b3cde0;
+      transform: rotateY(0deg);
+    }
+
+    .card.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card.flipped {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      border-radius: 0;
+    }
+
+    .card.flipped .card-inner {
+      border-radius: 0;
+    }
+
+    #developer.flipped .card-inner {
+      background: #f9fafb;
+    }
+
+    #designer.flipped .card-inner {
+      background: #2d3748;
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .card-front {
+      background: #b3cde0;
+      z-index: 2;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 30px;
+      padding-bottom: 25vh;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    #developer .card-back {
+      background: #f9fafb;
+      color: #2d3748;
+    }
+
+    #designer .card-back {
+      background: #2d3748;
+      color: #ffffff;
+    }
+
+    .card.flipped .card-back {
+      display: flex;
+      border-radius: 0;
+      z-index: 2;
+    }
+
+    .card:hover:not(.flipped) {
+      transform: translateY(-8px);
+    }
+
+    #dev-canvas, #designer-canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .typing-effect {
+      font-size: 2rem;
+      font-weight: 500;
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      color: #2d3748;
+      z-index: 2;
+      font-family: monospace;
+    }
+
+    #handwriting {
+      width: 90%;
+      height: 90px;
+      overflow: visible;
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .handwritten {
+      fill: none;
+      stroke: #2d3748;
+      stroke-width: 2.5;
+      font-size: 4rem;
+      font-family: 'Pacifico', cursive;
+      stroke-dasharray: 800;
+      stroke-dashoffset: 800;
+      animation: draw 3.5s infinite;
+    }
+
+    @keyframes draw {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    #mouse-trail {
+      position: fixed;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(179, 205, 224, 0.4) 0%, rgba(0, 0, 0, 0) 70%);
+      pointer-events: none;
+      z-index: 20;
+      transition: transform 0.1s ease;
+    }
+
+    .portfolio-header {
+      width: 100%;
+      background: #2d3748;
+      color: #f9fafb;
+      padding: 20px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+      z-index: 1;
+    }
+
+    .portfolio-section {
+      margin: 30px 0;
+      width: 100%;
+    }
+
+    .portfolio-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 1px solid #a0aec0;
+      padding-bottom: 6px;
+      position: relative;
+    }
+
+    #developer .portfolio-section h2 {
+      color: #2d3748;
+    }
+
+    #designer .portfolio-section h2 {
+      color: #ffffff;
+    }
+
+    .portfolio-section ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .portfolio-section ul li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 4px;
+    }
+
+    #developer .portfolio-section ul li {
+      color: #2d3748;
+    }
+
+    #designer .portfolio-section ul li {
+      color: #ffffff;
+    }
+
+    .portfolio-footer {
+      margin-top: auto;
+      padding: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-align: center;
+      border-top: 1px solid #a0aec0;
+    }
+
+    #developer .portfolio-footer {
+      color: #a0aec0;
+    }
+
+    #designer .portfolio-footer {
+      color: #d1d5db;
+    }
+
+    #designer-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.8;
+    }
+
+    .video-fallback {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      opacity: 0.8;
+      display: none;
+    }
+
+    #designer-video:not([src]) + .video-fallback,
+    #designer-video:invalid + .video-fallback {
+      display: block;
+    }
+
+    .sand-word {
+      position: absolute;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      animation: rise 2s ease-out forwards;
+    }
+
+    @keyframes rise {
+      0% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-100px); }
+    }
+  </style>
+</head>
+<body>
+  <video id="waterfall-video" autoplay loop muted playsinline preload="auto">
+    <source src="bg_vid.mp4" type="video/mp4">
+    Your browser does not support the video tag. Please view this site in a modern browser.
+  </video>
+  <h1>Choose Your Character</h1>
+  <div class="container">
+    <div class="card" id="developer">
+      <div class="card-inner">
+        <div class="card-front">
+          <canvas id="dev-canvas"></canvas>
+          <div class="typing-effect" id="dev-typing"></div>
+        </div>
+        <div class="card-back">
+          <div class="portfolio-header">Fardaad Khan - Software Developer</div>
+          <div class="portfolio-section">
+            <h2>💻 Software Projects</h2>
+            <ul>
+              <li style="--index: 0;">1) AWS - Cafe Management Store</li>
+              <li style="--index: 1;">2) CISCO Networking and Routing</li>
+              <li style="--index: 2;">3) High Distinction in AI for Engineering – Broken Sign Detection</li>
+              <li style="--index: 3;">4) Custom Payment Forms using iFrames</li>
+              <li style="--index: 4;">5) Data Structures & Algorithms – High Distinction</li>
+              <li style="--index: 5;">6) Railway Crossing using Arduino</li>
+              <li style="--index: 6;">7) Smoke, Climate, Temp Detector using Arduino + C#</li>
+              <li style="--index: 7;">8) Fun Projects – Calc App, Quiz App, Clone Chatbot, Impossible Puzzle Games</li>
+            </ul>
+          </div>
+          <div class="portfolio-section">
+            <h2>🛠️ Technical Skills</h2>
+            <ul>
+              <li style="--index: 0;">Programming Languages: Python, C#, JavaScript</li>
+              <li style="--index: 1;">Frameworks & Tools: AWS, Node.js, Arduino</li>
+              <li style="--index: 2;">Networking: Cisco Routing & Switching</li>
+              <li style="--index: 3;">AI & Machine Learning: TensorFlow, Scikit-learn</li>
+              <li style="--index: 4;">Web Development: HTML, CSS, iFrames</li>
+              <li style="--index: 5;">Data Structures & Algorithms: Advanced Proficiency</li>
+            </ul>
+          </div>
+          <div class="portfolio-footer">
+            © 2025 Fardaad Khan | Portfolio Presentation
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" id="designer">
+      <div class="card-inner">
+        <div class="card-front">
+          <canvas id="designer-canvas"></canvas>
+          <svg id="handwriting" viewBox="0 0 800 100">
+            <text x="0" y="75" class="handwritten">UI/UX Designer</text>
+          </svg>
+        </div>
+        <div class="card-back">
+          <video id="designer-video" autoplay loop muted playsinline preload="auto">
+            <source src="ui_bg.mp4" type="video/mp4">
+            Your browser does not support the video tag. Please view this site in a modern browser.
+          </video>
+          <img class="video-fallback" src="ui_bg_fallback.jpg" alt="UI/UX Designer Background">
+          <div class="portfolio-header">Fardaad Khan - UI/UX Designer</div>
+          <div class="portfolio-section">
+            <h2>UI/UX Design Projects</h2>
+            <ul>
+              <li>Interface Design for Websites</li>
+              <li>Set up and Designed Sites in Statamic</li>
+              <li>Payment Forms Embedded via iFrame</li>
+              <li>Creative Concepts – Clone Chatbot UI, Puzzle Game UI</li>
+            </ul>
+          </div>
+          <div class="portfolio-section">
+            <h2>Code + Design Crossover</h2>
+            <ul>
+              <li>Tailwind CSS + Alpine.js + Slick Carousel Integration</li>
+              <li>CSS Animations & Microinteractions</li>
+              <li>Responsive UX-focused Dashboards</li>
+            </ul>
+          </div>
+          <div class="portfolio-footer">
+            © 2025 Fardaad Khan | UI/UX Portfolio
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="mouse-trail"></div>
+  <script>
+    function createSpiderWeb(canvasId, cardWidth, cardHeight, cardElement) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      canvas.width = cardWidth;
+      canvas.height = cardHeight;
+
+      let particleCount = 30;
+      let particles = Array.from({ length: particleCount }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2 + 1,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        color: ['#4a90e2', '#b3cde0', '#e6f0fa'][Math.floor(Math.random() * 3)]
+      }));
+
+      cardElement.addEventListener('mouseenter', () => {
+        particleCount = 50;
+        particles = Array.from({ length: particleCount }, () => ({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 2 + 1,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          color: ['#4a90e2', '#b3cde0', '#e6f0fa'][Math.floor(Math.random() * 3)]
+        }));
+      });
+
+      cardElement.addEventListener('mouseleave', () => {
+        particleCount = 30;
+        particles = particles.slice(0, particleCount);
+      });
+
+      function drawWeb() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach((p, i) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = 0.7;
+          ctx.fill();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+            const maxDist = cardElement.matches(':hover') ? 150 : 100;
+            const lineWidth = cardElement.matches(':hover') ? 1 : 0.5;
+            if (dist < maxDist) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = 0.3;
+              ctx.lineWidth = lineWidth;
+              ctx.stroke();
+            }
+          }
+
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+          if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        });
+        requestAnimationFrame(drawWeb);
+      }
+      drawWeb();
+    }
+
+    const devCard = document.getElementById('developer');
+    const designerCard = document.getElementById('designer');
+    createSpiderWeb('dev-canvas', 350, 430, devCard);
+    createSpiderWeb('designer-canvas', 350, 430, designerCard);
+
+    const devText = "Software Developer";
+    const typingElement = document.getElementById("dev-typing");
+    let index = 0, isDeleting = false;
+    function typeNextChar() {
+      if (!isDeleting && index < devText.length) {
+        typingElement.textContent += devText.charAt(index++);
+        setTimeout(typeNextChar, 120);
+      } else if (isDeleting && index > 0) {
+        typingElement.textContent = devText.substring(0, --index);
+        setTimeout(typeNextChar, 60);
+      } else if (index === devText.length) {
+        isDeleting = true;
+        setTimeout(typeNextChar, 1000);
+      } else {
+        isDeleting = false;
+        setTimeout(typeNextChar, 500);
+      }
+    }
+    typeNextChar();
+
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('click', () => {
+        if (card.classList.contains('flipped')) {
+          card.style.transition = 'none';
+          card.classList.remove('flipped');
+          setTimeout(() => {
+            card.style.transition = 'all 0.3s ease';
+            card.querySelector('.card-back').style.display = 'none';
+          }, 10);
+        } else {
+          card.querySelector('.card-back').style.display = 'flex';
+          card.classList.add('flipped');
+        }
+      });
+    });
+
+    const designerVideo = document.getElementById('designer-video');
+    designerVideo.addEventListener('error', (e) => {
+      console.error('Error loading designer video:', e);
+      console.error('Video source:', designerVideo.currentSrc);
+    });
+    designerVideo.addEventListener('loadeddata', () => {
+      console.log('Designer video loaded successfully');
+    });
+
+    const mouseTrail = document.getElementById('mouse-trail');
+    document.addEventListener('mousemove', (e) => {
+      mouseTrail.style.left = `${e.clientX - 12.5}px`;
+      mouseTrail.style.top = `${e.clientY - 12.5}px`;
+    });
+
+    const designerBack = document.querySelector('#designer .card-back');
+    const words = [
+      'I make cool designs like this one',
+      'Creative',
+      'Innovative',
+      'Sleek',
+      'Modern',
+      'User-Friendly',
+      'Elegant'
+    ];
+    let lastWordTime = 0;
+    const minWordGap = 500;
+    const activeWords = new Set();
+
+    designerBack.addEventListener('mousemove', (e) => {
+      if (!designerCard.classList.contains('flipped')) return;
+
+      const now = Date.now();
+      if (now - lastWordTime < minWordGap) return;
+      lastWordTime = now;
+
+      const rect = designerBack.getBoundingClientRect();
+      const mouseY = e.clientY - rect.top;
+      if (mouseY < rect.height * 0.75) return;
+
+      const word = document.createElement('div');
+      word.className = 'sand-word';
+      word.textContent = words[Math.floor(Math.random() * words.length)];
+
+      let x = e.clientX - rect.left;
+      let tooClose = false;
+      activeWords.forEach(w => {
+        const wRect = w.getBoundingClientRect();
+        if (Math.abs(wRect.left - x) < 100) {
+          tooClose = true;
+        }
+      });
+      if (tooClose) {
+        x += (Math.random() > 0.5 ? 100 : -100);
+        x = Math.max(20, Math.min(x, rect.width - 20));
+      }
+
+      word.style.left = `${x}px`;
+      word.style.bottom = '10px';
+      designerBack.appendChild(word);
+      activeWords.add(word);
+
+      setTimeout(() => {
+        word.remove();
+        activeWords.delete(word);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
