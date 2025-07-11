@@ -135,7 +135,7 @@
     }
 
     #designer .card-back {
-      background: #2d3748;
+      
       color: #ffffff;
     }
 
@@ -218,9 +218,20 @@
       font-size: 1.6rem;
       font-weight: 700;
       text-align: center;
-      position: relative;
-      overflow: visible;
-      z-index: 1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+    }
+
+    .card.flipped .portfolio-header {
+      width: 100vw;
+    }
+
+    .portfolio-content {
+      margin-top: 80px;
+      width: 100%;
     }
 
     .portfolio-section {
@@ -242,7 +253,7 @@
     }
 
     #designer .portfolio-section h2 {
-      color: #ffffff;
+      color: #e4e4e4;
     }
 
     .portfolio-section ul {
@@ -264,6 +275,7 @@
 
     #designer .portfolio-section ul li {
       color: #ffffff;
+      
     }
 
     .portfolio-footer {
@@ -280,7 +292,7 @@
     }
 
     #designer .portfolio-footer {
-      color: #d1d5db;
+      color: #e6f0fa;
     }
 
     #designer-video {
@@ -326,29 +338,31 @@
         </div>
         <div class="card-back">
           <div class="portfolio-header">Fardaad Khan - Software Developer</div>
-          <div class="portfolio-section">
-            <h2>💻 Software Projects</h2>
-            <ul>
-              <li style="--index: 0;">1) AWS - Cafe Management Store</li>
-              <li style="--index: 1;">2) CISCO Networking and Routing</li>
-              <li style="--index: 2;">3) AI for Engineering – Broken Sign Detection</li>
-              <li style="--index: 3;">4) Custom Payment Forms using iFrames</li>
-              <li style="--index: 4;">5) Robot Navigation using DFS, BFS, Astar and Djikstra's</li>
-              <li style="--index: 5;">6) Railway Crossing using Arduino</li>
-              <li style="--index: 6;">7) Smoke, Climate, Temp Detector using Arduino + C#</li>
-              <li style="--index: 7;">8) Fun Projects – Calc App, Quiz App, Clone Chatbot, Impossible Puzzle Games</li>
-            </ul>
-          </div>
-          <div class="portfolio-section">
-            <h2>🛠️ Technical Skills</h2>
-            <ul>
-              <li style="--index: 0;">Programming Languages: Python, C#, JavaScript</li>
-              <li style="--index: 1;">Frameworks & Tools: AWS, Node.js, Arduino</li>
-              <li style="--index: 2;">Networking: Cisco Routing & Switching</li>
-              <li style="--index: 3;">AI & Machine Learning: TensorFlow, Scikit-learn</li>
-              <li style="--index: 4;">Web Development: HTML, CSS, iFrames</li>
-              <li style="--index: 5;">Data Structures & Algorithms: Beginner Proficiency</li>
-            </ul>
+          <div class="portfolio-content">
+            <div class="portfolio-section">
+              <h2>💻 Software Projects</h2>
+              <ul>
+                <li style="--index: 0;">1) AWS - Cafe Management Store</li>
+                <li style="--index: 1;">2) CISCO Networking and Routing</li>
+                <li style="--index: 2;">3) AI for Engineering – Broken Sign Detection</li>
+                <li style="--index: 3;">4) Custom Payment Forms using iFrames</li>
+                <li style="--index: 4;">5) Robot Navigation using DFS, BFS, Astar and Djikstra's</li>
+                <li style="--index: 5;">6) Railway Crossing using Arduino</li>
+                <li style="--index: 6;">7) Smoke, Climate, Temp Detector using Arduino + C#</li>
+                <li style="--index: 7;">8) Fun Projects – Calc App, Quiz App, Clone Chatbot, Impossible Puzzle Games</li>
+              </ul>
+            </div>
+            <div class="portfolio-section">
+              <h2>🛠️ Technical Skills</h2>
+              <ul>
+                <li style="--index: 0;">Programming Languages: Python, C#, JavaScript</li>
+                <li style="--index: 1;">Frameworks & Tools: AWS, Node.js, Arduino</li>
+                <li style="--index: 2;">Networking: Cisco Routing & Switching</li>
+                <li style="--index: 3;">AI & Machine Learning: TensorFlow, Scikit-learn</li>
+                <li style="--index: 4;">Web Development: HTML, CSS, iFrames</li>
+                <li style="--index: 5;">Data Structures & Algorithms: Beginner Proficiency</li>
+              </ul>
+            </div>
           </div>
           <div class="portfolio-footer">
             © 2025 Fardaad Khan | Portfolio Presentation
@@ -370,23 +384,25 @@
             Your browser does not support the video tag. Please view this site in a modern browser.
           </video>
           <div class="portfolio-header">Fardaad Khan - UI/UX Designer</div>
-          <div class="portfolio-section">
-            <h2>UI/UX Design Projects</h2>
-            <ul>
-              <li>Interface Design for Websites</li>
-              <li>Set up and Designed Sites in Statamic</li>
-              <li>Payment Forms Embedded via iFrame</li>
-              <li>Creative Concepts – Clone Chatbot UI, Puzzle Game UI</li>
-            </ul>
-          </div>
-          <div class="portfolio-section">
-            <h2>Code + Design Crossover</h2>
-            <ul>
-              <li>Tailwind CSS + Alpine.js + Slick Carousel Integration</li>
-              <li>CSS Animations & Microinteractions</li>
-              <li>Responsive UX-focused Dashboards</li>
-              <li>Customised Iframe Donation forms</li>
-            </ul>
+          <div class="portfolio-content">
+            <div class="portfolio-section">
+              <h2>UI/UX Design Projects</h2>
+              <ul>
+                <li>Interface Design for Websites</li>
+                <li>Set up and Designed Sites in Statamic</li>
+                <li>Payment Forms Embedded via iFrame</li>
+                <li>Creative Concepts – Clone Chatbot UI, Puzzle Game UI</li>
+              </ul>
+            </div>
+            <div class="portfolio-section">
+              <h2>Code + Design Crossover</h2>
+              <ul>
+                <li>Tailwind CSS + Alpine.js + Slick Carousel Integration</li>
+                <li>CSS Animations & Microinteractions</li>
+                <li>Responsive UX-focused Dashboards</li>
+                <li>Customised Iframe Donation forms</li>
+              </ul>
+            </div>
           </div>
           <div class="portfolio-footer">
             © 2025 Fardaad Khan | UI/UX Portfolio
