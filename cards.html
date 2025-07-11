@@ -23,6 +23,25 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            position: relative; /* Added for positioning the home button */
+        }
+
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 400;
+            transition: background 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
         }
 
         h1 {
@@ -45,7 +64,7 @@
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; /* Increased gap for more spacing */
+            gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
@@ -138,6 +157,7 @@
     </style>
 </head>
 <body>
+    <a href="index.html" class="home-button">Back to Home</a>
     <h1>Welcome to my projects</h1>
     <h2>Click to flip!</h2>
     <div class="container">
@@ -145,8 +165,8 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Cafe Management">
-                    <h3>Cafe Management System</h3>
+                    <img src="aws.jpg" alt="Cafe Management">
+                    <h3>AWS Cafe System</h3>
                 </div>
                 <div class="card-back">
                     <h3>AWS - Cafe Management System</h3>
@@ -159,7 +179,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Weather Detection">
+                    <img src="arduino.jpg" alt="Weather Detection">
                     <h3>Environmental Monitoring</h3>
                 </div>
                 <div class="card-back">
@@ -173,7 +193,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="UI/UX Design">
+                    <img src="ui.jpg" alt="UI/UX Design">
                     <h3>UI/UX Design</h3>
                 </div>
                 <div class="card-back">
@@ -187,7 +207,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Iframe Embedding">
+                    <img src="iframe.jpg" alt="Iframe Embedding">
                     <h3>Iframe Embedding</h3>
                 </div>
                 <div class="card-back">
@@ -201,7 +221,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Payment Forms">
+                    <img src="form.JPG" alt="Payment Forms">
                     <h3>Payment Forms</h3>
                 </div>
                 <div class="card-back">
@@ -215,7 +235,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="AI Road Detection">
+                    <img src="road.jpg" alt="AI Road Detection">
                     <h3>AI Road Detection</h3>
                 </div>
                 <div class="card-back">
@@ -229,7 +249,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Railway Crossing">
+                    <img src="railway.jpg" alt="Railway Crossing">
                     <h3>Railway Crossing System</h3>
                 </div>
                 <div class="card-back">
@@ -243,7 +263,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="SQL Management">
+                    <img src="sql.jpg" alt="SQL Management">
                     <h3>SQL Management Systems</h3>
                 </div>
                 <div class="card-back">
@@ -257,7 +277,7 @@
         <div class="card">
             <div class="card-inner">
                 <div class="card-front">
-                    <img src="" alt="Statamic Sites">
+                    <img src="site.jpg" alt="Statamic Sites">
                     <h3>Statamic Sites</h3>
                 </div>
                 <div class="card-back">
