@@ -207,8 +207,6 @@
       color: #d89999;
       background: transparent;
       border: 2px solid #83624d;
-     
-
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease, color 0.3s ease;
@@ -329,16 +327,15 @@
     .developer-content {
       position: absolute;
       right: 0;
-      top: -20px;
+      top: 60px;
       width: 25%;
-      height: 100%;
+      height: calc(100% - 60px);
       color: #2d3748;
       padding: 20px;
       overflow-y: auto;
       z-index: 3;
     }
 
-    .developer-content .portfolio-header,
     .developer-content .portfolio-section h2,
     .developer-content .portfolio-section ul li,
     .developer-content .portfolio-footer {
@@ -347,8 +344,8 @@
 
     .intro-container {
       position: absolute;
-      top: 65%; /* Moved lower */
-      left: 51%; /* Moved more to the right */
+      top: 65%;
+      left: 51%;
       transform: translateX(-50%);
       text-align: center;
       z-index: 3;
@@ -386,6 +383,94 @@
       text-align: center;
       z-index: 3;
     }
+
+    .hanging-man-container {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      text-align: center;
+      z-index: 4;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .hanging-man-container:hover {
+      transform: translateX(-50%) translateY(-40px);
+    }
+
+    .hanging-man-svg {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto;
+    }
+
+    .hanging-man {
+      fill: #e6f0fa;
+    }
+
+    #developer .hanging-man {
+      fill: #2d3748;
+    }
+
+    .hanging-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e6f0fa;
+      padding: 8px 15px;
+      margin-top: 10px;
+      display: inline-block;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    #developer .hanging-text {
+      color: #2d3748;
+    }
+
+    .about-me {
+      display: none;
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #e6f0fa;
+      font-size: 1.1rem;
+      font-weight: 500;
+      z-index: 4;
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      text-align: center;
+    }
+
+    #developer .about-me {
+      color: #2d3748;
+    }
+
+    .hanging-man-container:hover .about-me {
+      display: block;
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(6deg); }
+      50% { transform: rotate(-6deg); }
+      100% { transform: rotate(6deg); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .hanging-man-svg {
+      animation: swing 1.8s ease-in-out infinite;
+    }
+
+    .hanging-man-container:hover .hanging-man-svg {
+      animation: none;
+    }
   </style>
 </head>
 <body>
@@ -406,8 +491,26 @@
             <source src="dev_bg.mp4" type="video/mp4">
             Your browser does not support the video tag. Please view this site in a modern browser.
           </video>
+          <div class="portfolio-header">Fardaad Khan - Software Developer</div>
+          <div class="hanging-man-container">
+            <svg class="hanging-man-svg" viewBox="0 0 100 100">
+              <g class="hanging-man">
+                <line x1="50" y1="0" x2="50" y2="25" stroke="#000" stroke-width="3"/>
+                <circle cx="50" cy="35" r="12" fill="currentColor"/>
+                <line x1="50" y1="47" x2="50" y2="70" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="47" x2="38" y2="57" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="47" x2="62" y2="57" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="70" x2="43" y2="85" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="70" x2="57" y2="85" stroke="#000" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="hanging-text">PSSSS OVER HERE!</div>
+            <div class="about-me">
+              Email: fardaadbusiness@gmail.com<br>
+              Phone: 0483894346
+            </div>
+          </div>
           <div class="developer-content">
-            <div class="portfolio-header">Fardaad Khan - Software Developer</div>
             <div class="portfolio-content">
               <div class="portfolio-section">
                 <h2>💻 Software Projects</h2>
@@ -459,6 +562,24 @@
             Your browser does not support the video tag. Please view this site in a modern browser.
           </video>
           <div class="portfolio-header">Fardaad Khan - UI/UX Designer</div>
+          <div class="hanging-man-container">
+            <svg class="hanging-man-svg" viewBox="0 0 100 100">
+              <g class="hanging-man">
+                <line x1="50" y1="0" x2="50" y2="25" stroke="#000" stroke-width="3"/>
+                <circle cx="50" cy="35" r="12" fill="currentColor"/>
+                <line x1="50" y1="47" x2="50" y2="70" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="47" x2="38" y2="57" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="47" x2="62" y2="57" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="70" x2="43" y2="85" stroke="#000" stroke-width="3"/>
+                <line x1="50" y1="70" x2="57" y2="85" stroke="#000" stroke-width="3"/>
+              </g>
+            </svg>
+            <div class="hanging-text">PSSSS OVER HERE!</div>
+            <div class="about-me">
+              Email: fardaadbusiness@gmail.com<br>
+              Phone: 0483894346
+            </div>
+          </div>
           <div class="portfolio-content">
             <div class="portfolio-section">
               <h2>UI/UX Design Projects</h2>
