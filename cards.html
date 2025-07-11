@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-image: url('card_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #142627;
+            margin-bottom: 10px;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #142627;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; /* Increased gap for more spacing */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            perspective: 1000px;
+            cursor: pointer;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+            color: #333;
+        }
+
+        .card-front img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card-front h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #fff;
+            transform: rotateY(180deg);
+            padding: 20px;
+        }
+
+        .card-back h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .card-back p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #ecf0f1;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to my projects</h1>
+    <h2>Click to flip!</h2>
+    <div class="container">
+        <!-- Card 1: AWS - Cafe Management System -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Cafe Management">
+                    <h3>Cafe Management System</h3>
+                </div>
+                <div class="card-back">
+                    <h3>AWS - Cafe Management System</h3>
+                    <p>Developed a cloud-based cafe management system using AWS services like Lambda and DynamoDB to streamline orders, inventory, and customer data management.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2: Weather, Climate, CO2 and O2 Detection -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Weather Detection">
+                    <h3>Environmental Monitoring</h3>
+                </div>
+                <div class="card-back">
+                    <h3>Weather & CO2/O2 Detection</h3>
+                    <p>Built a system using Arduino and C# to monitor weather, climate, CO2, and O2 levels, providing real-time data for environmental analysis.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3: UI/UX Design -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="UI/UX Design">
+                    <h3>UI/UX Design</h3>
+                </div>
+                <div class="card-back">
+                    <h3>UI/UX Design</h3>
+                    <p>Designed intuitive and visually appealing user interfaces for web and mobile apps, focusing on user experience and accessibility.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 4: Iframe Embedding -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Iframe Embedding">
+                    <h3>Iframe Embedding</h3>
+                </div>
+                <div class="card-back">
+                    <h3>Iframe Embedding in Sites</h3>
+                    <p>Integrated iframes into websites to embed external content seamlessly, enhancing functionality while maintaining design consistency.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 5: Payment Forms with Salesforce -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Payment Forms">
+                    <h3>Payment Forms</h3>
+                </div>
+                <div class="card-back">
+                    <h3>Salesforce Payment Forms</h3>
+                    <p>Created secure and user-friendly payment forms using Salesforce, integrating with payment gateways for efficient transactions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 6: AI Road Detection -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="AI Road Detection">
+                    <h3>AI Road Detection</h3>
+                </div>
+                <div class="card-back">
+                    <h3>AI Road Sign & Trash Detection</h3>
+                    <p>Developed an AI-powered system to detect broken road signs and trash, improving road safety and maintenance efficiency.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 7: Railway Crossing System -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Railway Crossing">
+                    <h3>Railway Crossing System</h3>
+                </div>
+                <div class="card-back">
+                    <h3>Railway Crossing System</h3>
+                    <p>Engineered a railway crossing system using Arduino and C# to enhance safety with automated gate control and signaling.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 8: SQL Management Systems -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="SQL Management">
+                    <h3>SQL Management Systems</h3>
+                </div>
+                <div class="card-back">
+                    <h3>SQL Management Systems</h3>
+                    <p>Built SQL-based systems for hospital and movie theater management, optimizing data storage and retrieval processes.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 9: Statamic Sites -->
+        <div class="card">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="" alt="Statamic Sites">
+                    <h3>Statamic Sites</h3>
+                </div>
+                <div class="card-back">
+                    <h3>Statamic Website Development</h3>
+                    <p>Developed dynamic and scalable websites using Statamic CMS, focusing on performance and user-friendly content management.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for card flip effect
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', (event) => {
+                event.stopPropagation(); // Prevent event bubbling
+                card.classList.toggle('flipped');
+                console.log('Card clicked:', card); // Debugging
+            });
+        });
+    </script>
+</body>
+</html>
